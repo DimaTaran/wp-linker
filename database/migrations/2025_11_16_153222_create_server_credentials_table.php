@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('server_credentials', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('server_id')->constrained()->cascadeOnDelete();
+            $table->string('credential_type', 50);
+            $table->string('username')->nullable();
+            $table->text('password_encrypted')->nullable();
+            $table->text('ssh_key_encrypted')->nullable();
+            $table->integer('port')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
+
+            $table->index('server_id');
         });
     }
 
