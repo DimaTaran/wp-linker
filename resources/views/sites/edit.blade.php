@@ -62,7 +62,7 @@
                         {{-- Buttons --}}
                         <div class="flex items-center justify-end gap-4">
                             <a href="{{ route('sites.show', $site) }}" class="text-gray-600 hover:text-gray-900">Cancel</a>
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-6 rounded">
                                 Update Site
                             </button>
                         </div>
