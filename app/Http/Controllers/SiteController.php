@@ -101,4 +101,21 @@ class SiteController extends Controller
             ->route('sites.index')
             ->with('success', "Site '{$siteName}' deleted successfully.");
     }
+
+    /**
+     * Search sites.
+     */
+    public function search(Request $request): View
+    {
+        $query = $request->input('q');
+
+        $sites = Site::where('name', 'like', "%{$query}%")
+            ->orWhere('domain', 'like', "%{$query}%")
+            ->orWhere('description', 'like', "%{$query}%")
+            ->with(['servers', 'cdns', 'wpCredentials'])
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+
+        return view('sites.index', compact('sites', 'query'));
+    }
 }

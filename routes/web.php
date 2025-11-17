@@ -13,3 +13,6 @@ Route::get('/', function () {
 
 // Sites - Resource routes (CRUD)
 Route::resource('sites', SiteController::class);
+
+Route::get('sites-search', [SiteController::class, 'search'])
+    ->name('sites.search');
